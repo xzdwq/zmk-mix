@@ -56,7 +56,7 @@
 
 &pro_micro_spi {
     status = "okay";
-    cs-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
 
     glidepoint: glidepoint@0 {
         compatible = "cirque,pinnacle";
