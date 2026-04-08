@@ -65,9 +65,9 @@
     glidepoint: glidepoint@0 {
         compatible = "cirque,pinnacle";
         reg = <0>;
-        spi-max-frequency = <1000000>;
+        spi-max-frequency = <400000>;
         status = "okay";
-        dr-gpios = <&gpio1 04 (GPIO_ACTIVE_HIGH)>;
+        dr-gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
 
         sensitivity = "1x";
         //sleep;
@@ -78,6 +78,7 @@
 / {
     glidepoint_listener {
         compatible = "zmk,input-listener";
+        status = "okay";
         device = <&glidepoint>;
         input-processors =
         <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
