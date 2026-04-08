@@ -47,7 +47,7 @@
 
         sensitivity = "2x";
         //invert-x;
-        sleep;
+        // sleep;
         // no-taps;
     };
 };
