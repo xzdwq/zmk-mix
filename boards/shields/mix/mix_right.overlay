@@ -65,31 +65,32 @@
     glidepoint: glidepoint@0 {
         compatible = "cirque,pinnacle";
         reg = <0>;
-        spi-max-frequency = <400000>;
+        spi-max-frequency = <100000>;
         status = "okay";
-        // dr-gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+        dr-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
 
         sensitivity = "1x";
         //sleep;
         // no-taps;
+        idle-packets-count = <3>;
     };
 };
 
 / {
     glidepoint_listener {
         compatible = "zmk,input-listener";
-        status = "okay";
         device = <&glidepoint>;
-        // input-processors =
-        // <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-        // <&zip_xy_scaler 5 2>;
-        //   scroller {
-        // layers = <1 2>;
-        // input-processors =
-        //     <&zip_xy_to_scroll_mapper>,
-        //     <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
-        //     <&zip_scroll_scaler 1 6>;
-        // };
+        status = "okay";
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
+            <&zip_xy_scaler 5 2>;
+        scroller {
+            layers = <1 2>;
+            input-processors =
+                <&zip_xy_to_scroll_mapper>,
+                <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_scroll_scaler 1 6>;
+        };
     };
 };
 
