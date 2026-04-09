@@ -67,12 +67,11 @@
         reg = <0>;
         spi-max-frequency = <100000>;
         status = "okay";
-        dr-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+        dr-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
 
         sensitivity = "1x";
         //sleep;
         // no-taps;
-        idle-packets-count = <3>;
     };
 };
 
