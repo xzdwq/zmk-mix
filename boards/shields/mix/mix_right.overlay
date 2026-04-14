@@ -67,7 +67,7 @@
         reg = <0>;
         spi-max-frequency = <1000000>;
         status = "okay";
-        dr-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+        dr-gpios = <&gpio1 04 (GPIO_ACTIVE_HIGH)>;
 
         sensitivity = "1x";
         //sleep;
@@ -79,18 +79,17 @@
     glidepoint_listener {
         compatible = "zmk,input-listener";
         device = <&glidepoint>;
-        status = "okay";
+        input-processors = 
+        <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
+        <&zip_xy_scaler 5 2>;
+          scroller {
+        layers = <1 2>;
         input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_xy_scaler 5 2>;
-        scroller {
-            layers = <1 2>;
-            input-processors =
-                <&zip_xy_to_scroll_mapper>,
-                <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
-                <&zip_scroll_scaler 1 6>;
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_scroll_scaler 1 6>;
         };
-    };
+    }; 
 };
 
 &right_encoder {
